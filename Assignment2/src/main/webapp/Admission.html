@@ -1,0 +1,122 @@
+ <!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>AdmissionForm</title>
+<link rel="stylesheet" href="Admission.css">
+</head>
+<body>
+	<div class="container">
+		<div class="header">
+			<h1 id="pageTitle">Admission Form</h1>
+			
+		</div>			     
+			<form class="form" action="sendConfirmationEmail" method="post">
+			<div class="form-control">
+        		<label for="name" id="name" >Names:</label>
+        		<input id="name" type="text" name="names" />
+        		<div><span id="nameError"></span></div>
+        	</div>
+        	
+        	<div class="form-control">
+        		<label for="email" id="email">Email:</label>
+        		<input id="emailtxt" type="text" name="email" />
+        		<div><span id="emailtxtError"></span></div>    
+      		</div>
+      		<p id="languages">Please select your preferred language:</p>
+            <br>
+            <select id="languageSelector" onchange="changeLanguage()">
+                <option value="en">English</option>
+                <option value="fr">French</option>
+                <option value="es">Spanish</option>
+            </select>        	      		      		        	      	      							      				     		 	    
+      		<div class="box">
+          		<div> <label for="picture" id="uploadTitle">Student Passport Picture:</label></div>
+          		<input type="file"  accept="image/png,image/jpg"  name="picture" id="file"  onchange="loadFile(event)">
+             	<div><span id="fileError"></span></div>
+            	<p><img id="output" width="120" height="80" /></p>
+            	            
+            	<script>
+            		var loadFile = function(event) {
+              		var image = document.getElementById('output');
+              		image.src = URL.createObjectURL(event.target.files[0]);
+            		};
+            	</script>       
+      		</div>
+      		
+      		 <div class="box">
+        		<div><label for="diploma" id="certificates">Certificates:</label></div>
+        		<input id="diplomadoc" type="file" name="diploma" accept="application/pdf" onchange="readURL(this)" accept="file/pdf">
+        		<div><span id="diplomaError"></span></div>
+        		<div class="display-pdf"></div>
+      		</div>
+      		
+      		<div class="form-control">
+        		<input class="button" type="submit" value="Submit" id ="give" />
+      		</div>
+      		
+      		<form class = "form-mail"action="sendConfirmationEmail" method="POST">      	
+    			<input type="email" name="recipientEmail" placeholder="Recipient's Email" id="recipient" required>
+    			<input type="text" name="confirmationCode" placeholder="Confirmation Code" id="confirm" required>
+    			<input type="submit" value="Send Confirmation Email" id="button">    		
+			</form>	
+                           		
+        	</form>
+        	</div>
+        	<script>
+        		function changeLanguage(){
+        			 var selectedLanguage = document.getElementById("languageSelector").value;
+        		        var languageData = {
+        		        		en: {
+        		                    pageTitle: "Student Admission Page",
+        		                    name: "Names:",
+        		                    email: "Email:",
+        		                    languages: "Please select your preferred language:",
+        		                    uploadTitle: "Student Passport Picture:", 
+        		                    certificates: "Certificates:",
+        		                    give: "Submit",
+        		                    recipient: "Recipient's Email",
+        		                    confirm: "Confirmation Code",
+        		                    button: "Send Confirmation Email"        		                    
+        		                },
+        		                fr: {
+        		                    pageTitle: "Page d'Admission des Étudiants",
+        		                    name: "Noms:",
+        		                    email: "E-mail:",
+        		                    languages: "Veuillez sélectionner votre langue préférée :",
+        		                    uploadTitle: "Photo Passeport d'Etudiant:", 
+        		                    certificates:"Certificat ou Diplome:",
+        		                    give: "Soumettre",
+        		                    recipient: "Receveur du E-Mail",
+        		                    confirm: "Confirmation du Code",
+        		                    button: "Envoyer un courriel de confirmation"
+        		                },
+        		                es: {
+        		                    pageTitle: "Página de Admisión de Estudiantes",
+        		                    name: "Nombres:",
+        		                    email: "Correo electronico:",
+        		                    languages: "Por favor, selecciona tu idioma preferido :",
+        		                    uploadTitle: "Foto de pasaporte de estudiante:", 
+        		                    certificates:"Certificado o Diploma:",
+        		                    give:"Entregar",
+        		                    recipient: "Receptor de correo electonico",
+        		                    confirm: "Confirmacion de codigo",
+        		                    button: "Enviar correo de confirmación"
+        		                }
+        					};
+        		        // Update the page content based on the selected language
+        		        document.getElementById("pageTitle").textContent = languageData[selectedLanguage].pageTitle;
+        		        document.getElementById("name").textContent = languageData[selectedLanguage].name;
+        		        document.getElementById("email").textContent = languageData[selectedLanguage].email;
+        		        document.getElementById("languages").textContent = languageData[selectedLanguage].languages;
+        		        document.getElementById("uploadTitle").textContent = languageData[selectedLanguage].uploadTitle;
+        		        document.getElementById("certificates").textContent = languageData[selectedLanguage].certificates; 
+        		        document.getElementById("give").value = languageData[selectedLanguage].give;
+        		        document.getElementById("recipient").textContent = languageData[selectedLanguage].recipient;
+        		        document.getElementById("confirm").textContent = languageData[selectedLanguage].confirm;
+        		        document.getElementById("button").value = languageData[selectedLanguage].button;
+        		        
+        		}
+        	</script>
+</body>
+</html>

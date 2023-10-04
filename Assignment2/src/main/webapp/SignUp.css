@@ -1,0 +1,45 @@
+@charset "ISO-8859-1";
+	body {
+  		background-image: url("./images/WORK.jpg");
+  		background-repeat: no-repeat;
+  		background-size: cover;
+	}
+
+	form {
+  		width: 500px;
+  		margin: 0 auto;
+  		padding: 70px;
+  		border: 1px solid #ccc;
+		background-color: white;		
+  		opacity:1;
+	}
+
+	h1 {
+  		text-align: center;
+  		color: white;  		
+	}
+
+	label {
+  		display: block;
+  		margin-bottom: 10px;
+	}
+
+	input {
+  		width: 95%;
+  		padding: 10px;
+  		border: 1px solid #ccc;
+	}
+
+	button {
+  		width: 100%;
+  		padding: 10px;
+  		background-color: #000;
+  		color: white;
+  		border:none;
+  		cursor: pointer;
+	}
+
+	button:hover {
+  		background-color: #333;
+	}
+	
